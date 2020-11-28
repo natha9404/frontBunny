@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlUser: "https://cors-anywhere.herokuapp.com/https://natha9404.pythonanywhere.com/users/",
+  urlTask: "https://cors-anywhere.herokuapp.com/https://natha9404.pythonanywhere.com/tasks/",
+  /* urlUser: " https://cors-anywhere.herokuapp.com/http://127.0.0.1:8000/users/",
+  urlTask: " https://cors-anywhere.herokuapp.com/http://127.0.0.1:8000/tasks/", */
 };
 
 /*
