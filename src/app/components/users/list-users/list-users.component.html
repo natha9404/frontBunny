@@ -1,9 +1,13 @@
 
+<app-create-user *ngIf="create"></app-create-user>
 <div class="fgContainer2">
   <h1> Users List </h1>
   <hr>
     <div class="mat-elevation-z8">
-
+    <div class="float-right">
+      <button type="button" class="btn btn-success" (click)="createUser()">New User</button>
+    </div>
+    
       <table mat-table [dataSource]="users" class="example-table"
             matSort matSortActive="name" matSortDisableClear matSortDirection="desc">
         <!-- Number Column -->

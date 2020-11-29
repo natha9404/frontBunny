@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ApiUserService } from '../../../services/User/api-user.service'
+import { CreateUserComponent } from '../create-user/create-user.component';
 
 @Component({
   selector: 'app-list-users',
@@ -21,11 +23,13 @@ export class ListUsersComponent implements OnInit {
   dataSource: any;
   expandedElement = false;
   users: any;
+  email: string;
+  create: boolean =false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apiU: ApiUserService) {
+  constructor(private apiU: ApiUserService, public dialog: MatDialog) {
     console.log('Hola ocnstructor')
     this.getUsers();
   }
@@ -45,6 +49,16 @@ export class ListUsersComponent implements OnInit {
         console.log('HOLITAAAS')
         console.log(errorServicio);
       });
+  }
+
+  
+  createUser(){
+    this.create = true;
+  }
+
+  public closeUser(){
+    this.create = false
+    this.getUsers();
   }
 
 }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule,  ReactiveFormsModule  } from '@angular/forms'
+
 //componentes
 
 import { AppComponent } from './app.component';
@@ -17,6 +19,10 @@ import { MatTableModule } from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
+import {  MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -26,18 +32,36 @@ import {MatIconModule} from '@angular/material/icon';
     CreateUserComponent,
     ListUsersComponent,
     CreateTaskComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    CreateUserComponent,
+  ],
+  entryComponents: [
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  },
+  {
+    provide: MAT_DIALOG_DATA,
+    useValue: {}
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
