@@ -22,6 +22,8 @@ export class ListTaskComponent implements OnInit {
   expandedElement = false;
   tasks: any;
   create: boolean =false;
+  descriptionDelet: string = '';
+  idDelet: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -57,6 +59,25 @@ export class ListTaskComponent implements OnInit {
     this.create = false
     this.getTasks();
   }
+
+  taskDelete(description,id){
+    this.descriptionDelet = description
+    this.idDelet = id
+  }
+
+  deleteTask(task_id){
+
+    this.apiT.deleteTask(task_id)
+      .subscribe((data: any) => {
+        console.log("eliminado")
+        document.getElementById("exampleModal").click();
+        this.getTasks();
+      }, (errorServicio) => {
+        console.log('HOLITAAAS')
+        console.log(errorServicio);
+      });
+  }
+
 
 
 }
