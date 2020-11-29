@@ -44,7 +44,10 @@ export class ApiUserService {
     //Se obtiene el token de local storage
     const token = localStorage.getItem('access_token');
     // Se añade el token en los headers de las peticiones
-    const headers = { 'Authorization': 'Token ' + token }
+    const headers = {
+      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Content-Type': 'application/json'
+    }
     return this.http.put<any>(url, body, { headers: headers });
   }
 
@@ -69,7 +72,7 @@ export class ApiUserService {
   }
 
   changeUser(body) {
-    return this.post('userDetail', body)
+    return this.put('userDetail/', body)
       .pipe(map(data => data));
   }
 }

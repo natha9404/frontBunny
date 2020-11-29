@@ -1,28 +1,29 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, OnInit, Inject } from '@angular/core';
+import { load } from '@angular/core/src/render3';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiUserService } from 'src/app/services/User/api-user.service';
-import { ListUsersComponent } from '../list-users/list-users.component';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
   form1: FormGroup;
   customerData: any;
   error: boolean = false;
   msgError: string = '';
 
-  constructor(
-    private apiU: ApiUserService, 
-    private listUser: ListUsersComponent,
+  userData: any;
+  constructor(private apiU: ApiUserService, 
     private fb: FormBuilder,
-    private router: Router) { 
-      this.createForm()
-    }
+    private router: Router) {
+      console.log('llegue')
+    this.userData = history.state;
+    console.log(this.userData)
+    this.createForm()
+   }
 
   ngOnInit() {
   }
@@ -35,12 +36,21 @@ export class CreateUserComponent implements OnInit {
     this.form1 = this.fb.group({
       name: ['', [Validators.required],],
     })
+    this.loadData()
+  }
+
+  loadData(){
+    this.form1.patchValue({
+      name: this.userData.name
+    })
   }
 
   saveUser(){
     this.customerData = 
-      {
-        "name" : this.form1.value.name,
+      {"user": {
+        "id": this.userData.id,
+        "name": this.form1.value.name,
+    }
       }
 
       if (this.form1.invalid) {
@@ -52,9 +62,9 @@ export class CreateUserComponent implements OnInit {
         return;
       } else {
   
-        this.apiU.createUser(this.customerData)
+        this.apiU.changeUser(this.customerData)
           .subscribe((data: any) => {
-            this.closeUser();
+            this.router.navigate(['/listUsers'])
           }, (errorServicio) => {
             this.error = true;
             console.log(errorServicio.error.message)
@@ -63,10 +73,4 @@ export class CreateUserComponent implements OnInit {
         }
       
   }
-
-  closeUser()
-  {
-    this.listUser.closeUser();
-  }
-
 }

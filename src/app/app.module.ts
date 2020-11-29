@@ -23,6 +23,7 @@ import {  MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { UpdateUserComponent } from './components/users/update-user/update-user.component';
 
 
 @NgModule({
@@ -34,9 +35,11 @@ import {MatInputModule} from '@angular/material/input';
     CreateTaskComponent,
     ListTaskComponent,
     CreateUserComponent,
+    UpdateUserComponent,
   ],
   entryComponents: [
     CreateUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
