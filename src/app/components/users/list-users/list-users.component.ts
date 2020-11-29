@@ -25,6 +25,9 @@ export class ListUsersComponent implements OnInit {
   users: any;
   email: string;
   create: boolean =false;
+  customerData:any;
+  nameDelet: string = '';
+  idDelet: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -59,6 +62,24 @@ export class ListUsersComponent implements OnInit {
   public closeUser(){
     this.create = false
     this.getUsers();
+  }
+
+  nameDelete(name,id){
+    this.nameDelet = name
+    this.idDelet = id
+  }
+
+  deleteUser(user_id){
+
+    this.apiU.deleteUser(user_id)
+      .subscribe((data: any) => {
+        console.log("eliminado")
+        document.getElementById("exampleModal").click();
+        this.getUsers();
+      }, (errorServicio) => {
+        console.log('HOLITAAAS')
+        console.log(errorServicio);
+      });
   }
 
 }

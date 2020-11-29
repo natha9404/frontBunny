@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
@@ -51,13 +51,24 @@ export class ApiUserService {
     return this.http.put<any>(url, body, { headers: headers });
   }
 
-  delete(route: string, body) {
+  delete(route: string, user_id) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
     const token = localStorage.getItem('access_token');
     // Se añade el token en los headers de las peticiones
-    const headers = { 'Authorization': 'Token ' + token }
-    return this.http.delete<any>(url, { headers: headers, params: body });
+
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+        'Content-Type': 'application/json'}),
+      body: {
+        "user": {
+            "id": user_id
+        }
+    },
+    };
+    console.log(user_id)    
+    return this.http.delete<any>(url, options);
   }
 
   getUsers() {
@@ -73,6 +84,12 @@ export class ApiUserService {
 
   changeUser(body) {
     return this.put('userDetail/', body)
+      .pipe(map(data => data));
+  }
+
+  deleteUser(user_id) {
+    console.log("user_id ", user_id)
+    return this.delete('userDetail/', user_id)
       .pipe(map(data => data));
   }
 }
