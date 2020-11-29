@@ -73,7 +73,7 @@ export class ApiTaskService {
   }
 
   changeTask(body){
-    return this.post('taskDetail/',body)
+    return this.put('taskDetail/',body)
       .pipe( map( data => data));
   }
   

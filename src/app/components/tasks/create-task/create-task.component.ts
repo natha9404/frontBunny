@@ -1,17 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { ApiTaskService } from 'src/app/services/Task/api-task.service';
 import { ApiUserService } from 'src/app/services/User/api-user.service';
 import { ListTaskComponent } from '../list-task/list-task.component';
-
-class User {
-  constructor(
-    public name: string
-  ) { }
-}
 
 @Component({
   selector: 'app-create-task',

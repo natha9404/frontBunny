@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { UpdateUserComponent } from './components/users/update-user/update-user.component';
 import { MatInputModule, MatAutocompleteModule, MatButtonModule } from '@angular/material';
+import { UpdateTaskComponent } from './components/tasks/update-task/update-task.component';
 
 
 @NgModule({
@@ -36,10 +37,12 @@ import { MatInputModule, MatAutocompleteModule, MatButtonModule } from '@angular
     ListTaskComponent,
     CreateUserComponent,
     UpdateUserComponent,
+    UpdateTaskComponent,
   ],
   entryComponents: [
     CreateUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
