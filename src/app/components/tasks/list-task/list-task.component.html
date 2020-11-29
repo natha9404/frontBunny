@@ -1,9 +1,12 @@
+<app-create-task *ngIf="create"></app-create-task>
 
 <div class="fgContainer2">
   <h1> Tasks List </h1>
   <hr>
     <div class="mat-elevation-z8">
-
+      <div class="float-right">
+            <button type="button" class="btn btn-success" (click)="createTask()">New Task</button>
+          </div>
       <table mat-table [dataSource]="tasks" class="example-table"
             matSort matSortActive="name" matSortDisableClear matSortDirection="desc">
         <!-- Number Column -->

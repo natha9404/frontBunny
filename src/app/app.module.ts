@@ -22,8 +22,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {  MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
 import { UpdateUserComponent } from './components/users/update-user/update-user.component';
+import { MatInputModule, MatAutocompleteModule, MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -54,7 +54,9 @@ import { UpdateUserComponent } from './components/users/update-user/update-user.
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule,
+    MatButtonModule
   ],
   providers: [{
     provide: MatDialogRef,

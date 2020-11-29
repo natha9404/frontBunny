@@ -21,6 +21,7 @@ export class ListTaskComponent implements OnInit {
   dataSource: any;
   expandedElement = false;
   tasks: any;
+  create: boolean =false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -47,5 +48,15 @@ export class ListTaskComponent implements OnInit {
         console.log(errorServicio);
       });
   }
+
+  createTask(){
+    this.create = true;
+  }
+
+  public closeTask(){
+    this.create = false
+    this.getTasks();
+  }
+
 
 }
