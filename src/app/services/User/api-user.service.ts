@@ -18,10 +18,10 @@ export class ApiUserService {
     console.log('HOLAA')
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    //const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }
     return this.http.get<any>(url, { headers: headers });
@@ -30,10 +30,10 @@ export class ApiUserService {
   post(route: string, body) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }
     return this.http.post<any>(url, body, { headers: headers });
@@ -42,10 +42,10 @@ export class ApiUserService {
   put(route: string, body) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }
     return this.http.put<any>(url, body, { headers: headers });
@@ -54,12 +54,12 @@ export class ApiUserService {
   delete(route: string, user_id) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
 
     const options = {
       headers: new HttpHeaders({
-        'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
         'Content-Type': 'application/json'}),
       body: {
         "user": {

@@ -25,6 +25,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { UpdateUserComponent } from './components/users/update-user/update-user.component';
 import { MatInputModule, MatAutocompleteModule, MatButtonModule } from '@angular/material';
 import { UpdateTaskComponent } from './components/tasks/update-task/update-task.component';
+import { TasksUserComponent } from './components/users/tasks-user/tasks-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -38,11 +40,13 @@ import { UpdateTaskComponent } from './components/tasks/update-task/update-task.
     CreateUserComponent,
     UpdateUserComponent,
     UpdateTaskComponent,
+    TasksUserComponent,
+    LoginComponent,
   ],
   entryComponents: [
     CreateUserComponent,
     UpdateUserComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
   ],
   imports: [
     BrowserModule,

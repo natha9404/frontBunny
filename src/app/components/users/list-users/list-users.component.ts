@@ -19,7 +19,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
     ])]
 })
 export class ListUsersComponent implements OnInit {
-  displayedColumns: string[] = ['id','name','options'];
+  displayedColumns: string[] = ['id','name','edit', 'list', 'delete'];
   dataSource: any;
   expandedElement = false;
   users: any;

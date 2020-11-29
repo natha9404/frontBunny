@@ -17,10 +17,10 @@ export class ApiTaskService {
   get(route: string) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }
     return this.http.get<any>(url, { headers: headers });
@@ -29,10 +29,10 @@ export class ApiTaskService {
   post(route: string, body) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }    
     return this.http.post<any>(url, body, { headers: headers });
@@ -41,10 +41,10 @@ export class ApiTaskService {
   put(route: string, body) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
     const headers = {
-      'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
       'Content-Type': 'application/json'
     }  
     return this.http.put<any>(url, body, { headers: headers });
@@ -53,12 +53,12 @@ export class ApiTaskService {
   delete(route: string, task_id) {
     const url = `${this.urlApi}${route}`;
     //Se obtiene el token de local storage
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     // Se añade el token en los headers de las peticiones
 
     const options = {
       headers: new HttpHeaders({
-        'Authorization': 'Token 114ad11a717654f91806fa9247745389edadb9ce',
+      'Authorization': 'Token '+token,
         'Content-Type': 'application/json'}),
       body: {
         "task": {
@@ -88,6 +88,12 @@ export class ApiTaskService {
   deleteTask(task_id) {
     console.log("task_id ", task_id)
     return this.delete('taskDetail/', task_id)
+      .pipe(map(data => data));
+  }
+
+  getTaskUser(body) {
+    console.log("en servicio", body)
+    return this.post('taskDetail/', body)
       .pipe(map(data => data));
   }
 
