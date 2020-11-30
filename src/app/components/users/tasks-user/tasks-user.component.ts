@@ -21,7 +21,8 @@ export class TasksUserComponent implements OnInit {
   idDelet: number;
   user_id: any;
   customerData: any;
-
+  resultsLength:any;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

@@ -24,7 +24,8 @@ export class ListTaskComponent implements OnInit {
   create: boolean =false;
   descriptionDelet: string = '';
   idDelet: number;
-
+  resultsLength: any;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

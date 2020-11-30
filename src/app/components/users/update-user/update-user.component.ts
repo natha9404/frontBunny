@@ -14,8 +14,9 @@ export class UpdateUserComponent implements OnInit {
   customerData: any;
   error: boolean = false;
   msgError: string = '';
-
+  closeUser:any;
   userData: any;
+  
   constructor(private apiU: ApiUserService, 
     private fb: FormBuilder,
     private router: Router) {

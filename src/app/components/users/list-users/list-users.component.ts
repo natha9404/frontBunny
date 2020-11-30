@@ -28,6 +28,7 @@ export class ListUsersComponent implements OnInit {
   customerData:any;
   nameDelet: string = '';
   idDelet: number;
+  resultsLength: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
