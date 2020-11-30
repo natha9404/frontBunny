@@ -1,0 +1,73 @@
+
+<app-create-user *ngIf="create"></app-create-user>
+
+<div class="fgContainer2">
+  <h1> Users List </h1>
+  <hr>
+    <div class="mat-elevation-z8">
+    <div class="float-right">
+      <button type="button" class="btn btn-success" (click)="createUser()">New User</button>
+    </div>
+    
+      <table mat-table [dataSource]="users" class="example-table"
+            matSort matSortActive="name" matSortDisableClear matSortDirection="desc">
+        <!-- Number Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        </ng-container>
+        <!-- Title Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row">{{row.name}}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell *matCellDef="let row">
+            <a [routerLink]="['/updateUser']" [state] = "row"><i class="fa fa-pencil"></i></a>
+        </ng-container>
+
+        <ng-container matColumnDef="list">
+          <th mat-header-cell *matHeaderCellDef>List Tasks</th>
+          <td mat-cell *matCellDef="let row">
+            <a [routerLink]="['/userTasks']" [state] = "row"><i class="fa fa-list-ol"></i></a>&nbsp;
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let row">
+            <a href="#" (click)="nameDelete(row.name, row.id)" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+      </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete the user "{{nameDelet}}"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteUser(idDelet)">Delete User</button>
+      </div>
+    </div>
+  </div>
+</div>

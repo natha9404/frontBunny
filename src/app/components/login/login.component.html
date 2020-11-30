@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2>Sign In</h2>
+    <hr>
+    <!-- Login Form -->
+    <form autocomplete="off" [formGroup]="form1">
+      <input type="text" class="fadeIn second" formControlName="username" 
+            [class.is-invalid]="usernameNoValid" placeholder="Username">
+                        <br>
+            <small *ngIf="usernameNoValid" class="text-danger">
+                        Username is required</small>
+      <input type="password" class="fadeIn third" formControlName="password" 
+            [class.is-invalid]="passwordNoValid" placeholder="Password">
+                        <br>
+
+            <small *ngIf="passwordNoValid" class="text-danger">
+                        Password is required</small>
+      <input type="submit" class="fadeIn fourth" value="Log In" (click)="login()">
+    </form>
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  {{msgError}}
+</div>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+    </div>
+
+  </div>
+</div>
